@@ -1,0 +1,618 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: antiquewhite;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+/* =====================
+   NAVIGATION — STICKY
+   ===================== */
+header {
+  background: #BF9B7A;
+  padding: 16px 40px;
+  position: sticky;        /* sticky nav fix */
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+}
+ 
+/* Slightly darker + more shadow when scrolled — toggled by JS */
+header.scrolled {
+  background: #a8825f;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+ 
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+ 
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 0;
+}
+ 
+header ul li {
+  margin: 0 20px;
+}
+ 
+header ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.3s;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+ 
+header ul li a:hover,
+header ul li a.active {
+  color: #f0e6dc;
+  border-bottom-color: #f0e6dc;
+}
+ 
+/* Call CTA button in nav */
+.nav-cta {
+  position: absolute;
+  right: 0;
+  background: #2c3e50;
+  color: white;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+ 
+.nav-cta:hover {
+  background: #1a252f;
+  transform: translateY(-1px);
+}
+ 
+/* ======
+   HERO
+   ====== */
+#hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  min-height: 88vh;
+  padding: 80px;
+  position: relative;
+  background-image: url(images/Superstitionmountain.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  will-change: transform;
+  transform: translateZ(0);
+}
+ 
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  transform: translateZ(0);
+}
+ 
+.hero-text,
+.contact-box {
+  position: relative;
+  z-index: 1;
+}
+ 
+.hero-text {
+  max-width: 600px;
+}
+ 
+.hero-text h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+ 
+.hero-text p {
+  font-size: 22px;
+  max-width: 600px;
+}
+ 
+/* Contact box */
+.contact-box {
+  width: 500px;
+  padding: 35px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+ 
+.contact-box h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 24px;
+}
+ 
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+}
+ 
+.contact-box textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+ 
+.contact-box button {
+  width: 100%;
+  padding: 14px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background 0.3s;
+  margin-top: 5px;
+}
+ 
+.contact-box button:hover {
+  background: #1a252f;
+}
+ 
+/* ========
+   SECTIONS
+   ======== */
+section {
+  padding: 100px 0;    /* fixed: was 200px — too tall */
+}
+ 
+.container {
+  max-width: 1200px;   /* tightened from 1600px */
+  margin: auto;
+  padding: 0 40px;
+}
+ 
+section h2 {
+  text-align: center;
+  margin-bottom: 60px;  /* fixed: was 100px */
+  font-size: 36px;
+  font-weight: 600;
+}
+ 
+/* ======
+   ABOUT
+   ====== */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;            /* reduced from 120px */
+}
+ 
+.about-text {
+  flex: 1;
+}
+ 
+.about-text h3 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+ 
+.about-text p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+ 
+.about-images {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+ 
+.about-images img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+ 
+/* ========
+   PROGRAMS
+   ======== */
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;           /* fixed: was 200px (typo) */
+  margin-top: 0;       /* fixed: was "150x" (typo) */
+}
+ 
+.program-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+ 
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+ 
+.program-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+ 
+/* =======
+   GALLERY
+   ======= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+ 
+.gallery-grid img:hover {
+  transform: scale(1.02);
+}
+ 
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: white;
+  font-size: 28px;
+  background: rgba(0,0,0,0.45);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+ 
+.lightbox-arrow:hover {
+  background: rgba(0,0,0,0.75);
+}
+ 
+.lightbox-arrow.left { left: 24px; }
+.lightbox-arrow.right { right: 24px; }
+ 
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+ 
+.lightbox-img {
+  max-width: min(80%, 1200px);
+  max-height: 85%;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+ 
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+ 
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+ 
+/* =============
+   TESTIMONIALS
+   ============= */
+#testimonials {
+  background: #2c3e50;
+  color: white;
+}
+ 
+#testimonials h2 {
+  color: white;
+}
+ 
+.testimonials-intro {
+  text-align: center;
+  font-size: 18px;
+  color: rgba(255,255,255,0.75);
+  margin-top: -40px;
+  margin-bottom: 50px;
+}
+ 
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+ 
+.testimonial-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 36px 32px 30px;
+  position: relative;
+  transition: transform 0.3s, background 0.3s;
+}
+ 
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.11);
+}
+ 
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  line-height: 0.6;
+  color: #BF9B7A;
+  margin-bottom: 20px;
+  display: block;
+}
+ 
+.testimonial-text {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+ 
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+ 
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+ 
+.author-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #BF9B7A;
+}
+ 
+.author-detail {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* =========
+   INSURANCE
+   ========= */
+#insurance {
+  background: #f5ede3;
+}
+ 
+.insurance-intro {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-top: -40px;
+  margin-bottom: 50px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ 
+.insurance-intro a {
+  color: #BF9B7A;
+  font-weight: 600;
+  text-decoration: none;
+}
+ 
+.insurance-intro a:hover {
+  text-decoration: underline;
+}
+ 
+.insurance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 240px));
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+ 
+.insurance-card {
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border-left: 4px solid #BF9B7A;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+ 
+.insurance-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+ 
+.insurance-name {
+  font-weight: 600;
+  font-size: 17px;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+ 
+.insurance-detail {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5;
+}
+ 
+.insurance-note {
+  background: rgba(191,155,122,0.15);
+  border: 1px solid rgba(191,155,122,0.35);
+  border-radius: 8px;
+  padding: 18px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+}
+ 
+/* ========
+   CONTACT
+   ======== */
+#contact .container p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+ 
+#contact a {
+  color: #BF9B7A;
+  text-decoration: none;
+  font-weight: 600;
+}
+ 
+#contact a:hover {
+  text-decoration: underline;
+}
+ 
+/* ======
+   FOOTER
+   ====== */
+footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 16px;
+}
+ 
+/* ==========
+   RESPONSIVE
+   ========== */
+@media (max-width: 992px) {
+  #hero {
+    flex-direction: column;
+    gap: 50px;
+    padding: 60px 30px;
+    text-align: center;
+    min-height: auto;
+  }
+ 
+  .hero-text h1 {
+    font-size: 48px;
+  }
+ 
+  .hero-text p {
+    font-size: 18px;
+  }
+ 
+  .contact-box {
+    width: 100%;
+    max-width: 500px;
+  }
+ 
+  .about-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+ 
+  header nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+ 
+  .nav-cta {
+    position: static;
+    margin-top: 8px;
+  }
+ 
+  .lightbox-arrow.left {
+    left: 12px;
+  }
+
+  .lightbox-arrow.right {
+    right: 12px;
+  }
+}
+ 
+@media (max-width: 600px) {
+  header {
+    padding: 14px 20px;
+  }
+ 
+  header ul li {
+    margin: 0 10px;
+  }
+ 
+  section {
+    padding: 70px 0;
+  }
+ 
+  .hero-text h1 {
+    font-size: 36px;
+  }
+}
